@@ -1,30 +1,28 @@
-
 // C program for writing to file
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "main.h"
+
 
 char* readFile() {
-	File *inFile;
+	FILE *inFile;
 	char *message;
-	infile = fopen("sender.txt", "r");
+	inFile = fopen("./sender.txt", "r");
 	if(inFile == NULL){
 		fprintf(stderr,"Error opening");
 		exit(1);
 	}
 
-	while fread(&message, sizeof(message), 1, inFile){
-		printf("%s\n", message);
+	while (fread(&message, sizeof(message), 1, inFile)){
+		// printf("%c\n", message);
 	}
 	fclose(inFile);
 	return message;
 }
 
 void writeFile(char* message) {
-	File *outfile;
-	char *message;
-	outfile = fopen("receiver.txt", "w");
+	FILE *outfile;
+	outfile = fopen("./receiver.txt", "w");
 	if(outfile == NULL){
 		fprintf(stderr,"Error opening");
 		exit(1);
@@ -40,7 +38,17 @@ void writeFile(char* message) {
     fclose (outfile);
 }
 
+void ASCIIToDecimal(char *txt){
+	int *dec;
+	memset(&dec, 0, 0*sizeof(int));
+	printf("Size of txt %i\n", sizeof(txt));
+	for(int i=0; i<sizeof(txt);++i){
+
+	}
+	
+}
 int main(){
-	File *o
-	outfile = new File
+	ASCIIToDecimal(readFile());
+
+	
 }

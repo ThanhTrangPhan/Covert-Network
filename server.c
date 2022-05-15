@@ -35,7 +35,7 @@
 #include <mach/mach.h>
 #endif
 
-int result[2048];
+char result[2048];
 int result_elements;
 
  
@@ -81,23 +81,18 @@ void print_time_diff(void)
 
 void inform_disconnected()
 {
-	fprintf(stderr,"The message received : ");
-	char *string_result = (char *)DecimalToASCII(result);
-	fprintf(stderr,"printout: %s\n", string_result);
-	for(int i = 0; i <strlen(string_result); i++){
-		fprintf(stderr,"%s\n",string_result[i]);
-	}
 
-	// for(int i=0; i<result_elements; i++){
-	// 	fprintf(stderr,"%c", result[i]);
-	// }
+	fprintf(stderr, "Message received: \n");
+	for(int i=0; i<result_elements; i++){
+		fprintf(stderr,"%c", result[i]);
+	}
 	
 	fprintf(stderr, "\nThe connection was closed by the foreign host.\n");
 	fprintf(stderr, "Shutdown ..\n");
 	exit(OK_EXIT);
 }
 
-int main(int argc, char *argv[])
+char *main(int argc, char *argv[])
 {
 	int ch;
 	int sockfd;
@@ -225,9 +220,9 @@ int main(int argc, char *argv[])
 					printf(" > destination + padding: %s\n", dst_n_pad);
 					printf(" > number of options:     %d\n", hdr->number_of_options);
 				
-					//result[result_elements++] = itoa(hdr->dummy);
 					int tmp = (int)hdr->dummy;
 					result[result_elements++] = tmp;
+					
 					if (hdr->number_of_options >= 1)
 					{
 						int i;

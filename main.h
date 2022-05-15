@@ -81,6 +81,8 @@ typedef struct {
 void *calloc_exit(int size, int elem);
 void usage(int type);
 void print_gpl(void);
+char *_itoa(int num, char *buffer, int base);
+char *AppendString(const char *str1, const char *str2);
 char *DecimalToASCII(char* dec);
 char *ASCIIToDecimal(char* str);
 
