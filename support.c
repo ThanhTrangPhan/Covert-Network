@@ -31,8 +31,8 @@
 #define OUTPUT_PARAMETER_Q "-q     Suppress welcome message; useful if CCEAP runs in a loop\n"
 
 void
-*
-calloc_exit(int size, int elem)
+    *
+    calloc_exit(int size, int elem)
 {
     void *q;
 
@@ -63,50 +63,50 @@ void usage(int type)
 {
     switch (type)
     {
-        case USAGE_CLIENT:
-            printf("The following parameters are supported by CCEAP client v." CCEAP_VER ":\n"
-                   "\n"
-                   "--------------------------------------------------------------\n"
-                   "*** General parameters:\n"
-                   "-D x   Destination IP x to connect to\n"
-                   "-P x   TCP port x to connect to\n"
-                   "-h     Provide an overview of supported parameters (this output)\n" OUTPUT_PARAMETER_Q
-                   "-v     Activate verbose mode\n"
-                   "-t x   Use the inter-arrival times in 'x' between packets (x should\n"
-                   "       be given in the format 'Time_1,Time_2,...' (in ms)\n"
-                   "-T x   Use inter-arrival time x[ms] for *all* packets (default is\n"
-                   "       1000ms, i.e. 1sec)\n"
-                   "\n"
-                   "*** Parameters specific for the CCEAP protocol:\n"
-                   "-c x   Number of packets to send (default: 10)\n"
-                   "-i x   Initial sequence number x to use for CCEAP\n"
-                   "-p x   Duplicate the packet with the sequence number x\n"
-                   "-x x   Exclude the packet with the sequence number x\n"
-                   "-s x   Use a pre defined sequence numbers given in x in the form:\n"
-                   "       'Seq_1,Seq_2,Seq_3', e.g. '1,2,3', where 1 is the ISN\n"
-                   "-d x   Use CCEAP destination address x\n"
-                   "-o x   Optional header elements specified via x.\n"
-                   "       Formatting: 'Option_1/Option_2/Option_3/...' where each\n"
-                   "       option is formatted as 'Identifier,Type,Value'.\n"
-                   "       Maximum of allowed options: %d\n"
-                   "       Example for a string with 3 options: '1,2,3/4,5,6/7,8,9'\n"
-                   "-u x   Use digit x instead of 0 as `dummy' value in the main header\n"
-                   "--------------------------------------------------------------\n",
-                   MAX_NUM_OPTIONS);
-            break;
-        case USAGE_SERVER:
-            printf("The following parameters are supported by the CCEAP server v." CCEAP_VER ":\n"
-                   "\n"
-                   "--------------------------------------------------------------\n"
-                   "*** General parameters:\n"
-                   "-h     Provide an overview of supported parameters (this output)\n"
-                   "-v     Activate verbose mode\n"
-                   "-P x   TCP port x to listen to\n" OUTPUT_PARAMETER_Q
-                   "--------------------------------------------------------------\n");
-            break;
-        default:
-            fprintf(stderr, "Unsupported usage() parameter!\n");
-            break;
+    case USAGE_CLIENT:
+        printf("The following parameters are supported by CCEAP client v." CCEAP_VER ":\n"
+               "\n"
+               "--------------------------------------------------------------\n"
+               "*** General parameters:\n"
+               "-D x   Destination IP x to connect to\n"
+               "-P x   TCP port x to connect to\n"
+               "-h     Provide an overview of supported parameters (this output)\n" OUTPUT_PARAMETER_Q
+               "-v     Activate verbose mode\n"
+               "-t x   Use the inter-arrival times in 'x' between packets (x should\n"
+               "       be given in the format 'Time_1,Time_2,...' (in ms)\n"
+               "-T x   Use inter-arrival time x[ms] for *all* packets (default is\n"
+               "       1000ms, i.e. 1sec)\n"
+               "\n"
+               "*** Parameters specific for the CCEAP protocol:\n"
+               "-c x   Number of packets to send (default: 10)\n"
+               "-i x   Initial sequence number x to use for CCEAP\n"
+               "-p x   Duplicate the packet with the sequence number x\n"
+               "-x x   Exclude the packet with the sequence number x\n"
+               "-s x   Use a pre defined sequence numbers given in x in the form:\n"
+               "       'Seq_1,Seq_2,Seq_3', e.g. '1,2,3', where 1 is the ISN\n"
+               "-d x   Use CCEAP destination address x\n"
+               "-o x   Optional header elements specified via x.\n"
+               "       Formatting: 'Option_1/Option_2/Option_3/...' where each\n"
+               "       option is formatted as 'Identifier,Type,Value'.\n"
+               "       Maximum of allowed options: %d\n"
+               "       Example for a string with 3 options: '1,2,3/4,5,6/7,8,9'\n"
+               "-u x   Use digit x instead of 0 as `dummy' value in the main header\n"
+               "--------------------------------------------------------------\n",
+               MAX_NUM_OPTIONS);
+        break;
+    case USAGE_SERVER:
+        printf("The following parameters are supported by the CCEAP server v." CCEAP_VER ":\n"
+               "\n"
+               "--------------------------------------------------------------\n"
+               "*** General parameters:\n"
+               "-h     Provide an overview of supported parameters (this output)\n"
+               "-v     Activate verbose mode\n"
+               "-P x   TCP port x to listen to\n" OUTPUT_PARAMETER_Q
+               "--------------------------------------------------------------\n");
+        break;
+    default:
+        fprintf(stderr, "Unsupported usage() parameter!\n");
+        break;
     }
     exit(ERR_EXIT);
 }
@@ -223,7 +223,7 @@ char *ConcateString(const char *str1, const char *str2)
     int str1Len = strlen(str1);
     int str2Len = strlen(str2);
     int strLen = str1Len + str2Len;
-    char *str = malloc(strLen+1);
+    char *str = malloc(strLen + 1);
 
     for (int i = 0; i < str1Len; i++)
         str[i] = str1[i];
@@ -234,7 +234,6 @@ char *ConcateString(const char *str1, const char *str2)
 
     return str;
 }
-
 
 char *_itoa(int num, char *buffer, int base)
 {
@@ -293,7 +292,7 @@ char *DecimalToASCII(char *dec)
     int decLen = strlen(dec);
     char *token;
     char *ptr_optarg;
-    int i=0;
+    int i = 0;
     char *saveptr;
     for (ptr_optarg = dec;; ptr_optarg = NULL)
     {
@@ -332,4 +331,3 @@ char *ASCIIToDecimal(char *str)
 
     return dec;
 }
-

@@ -45,6 +45,7 @@ all : $(OBJECTS)
 	$(CC) $(BUILDFLAGS) -o iat_encode iat_encode.o 
 	$(CC) $(BUILDFLAGS) -o seq_encode seq_encode.o
 	$(CC) $(BUILDFLAGS) -o rand_seq rand_seq.o
+	$(CC) $(BUILDFLAGS) -o value_module_encode value_module_encode.c support.o -lm
 
 clean : 
 	rm -vf client server iat_encode seq_encode rand_seq a.out *~ *.core core $(OBJECTS)
